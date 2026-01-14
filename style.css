@@ -117,7 +117,7 @@ text-align: center;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
-.cert-card h3 {
+.cert-card h2 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -185,6 +185,7 @@ text-align: center;
   letter-spacing: 1 px;
   text-transform: uppercase;
 }
+
 
 
 
