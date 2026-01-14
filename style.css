@@ -111,12 +111,12 @@ text-align: center;
 }
 
 .cert-card {
-  background: #FFF;
-  border-radius: 12px;
-  margin-top: 20px;
-  padding-left: 20px;
-  text-align: left;  
-  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  background: #FFFDFB;
+  border-radius: 14px;
+  padding: 30px;
+  margin: 0 auto 50px auto;
+  max-width: 800px;   /* KEY CHANGE */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
 .cert-card h3 {
@@ -167,6 +167,7 @@ text-align: center;
   letter-spacing: 1 px;
   text-transform: uppercase;
 }
+
 
 
 
