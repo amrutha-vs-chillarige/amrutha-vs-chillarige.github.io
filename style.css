@@ -121,6 +121,10 @@ text-align: center;
   text-align: center;
   margin-bottom: 20px;
 }
+.cert-card h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 .cert-card ul {
   max-width: 620px;
@@ -181,6 +185,7 @@ text-align: center;
   letter-spacing: 1 px;
   text-transform: uppercase;
 }
+
 
 
 
