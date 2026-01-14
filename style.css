@@ -102,12 +102,10 @@ text-align: center;
   text-decoration: underline;
 }
 
-
+/* CERTIFICATIONS */
 .certifications {
-  max-width: 1000px;
-  margin:  0 auto 20px auto;
-  padding: 40px 20px;
-  text-align: center;
+  background-color: #FBF6F2;
+  padding: 30px 0;
 }
 
 .cert-card {
@@ -115,7 +113,7 @@ text-align: center;
   border-radius: 14px;
   padding: 30px;
   margin: 0 auto 50px auto;
-  max-width: 800px;   /* KEY CHANGE */
+  max-width: 800px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
@@ -124,16 +122,31 @@ text-align: center;
   margin-bottom: 20px;
 }
 
-.cert-card p {
-  margin-bottom: 10px;
-  color: #7a4a3a;
-}
-
-.cert-card a {
- max-width: 620px;        /* narrower text column */
+.cert-card ul {
+  max-width: 620px;
   margin: 0 auto 20px auto;
   padding-left: 20px;
-  text-align: left;        /* bullets stay readable */
+  text-align: left;
+}
+
+.cert-tech {
+  text-align: center;
+  font-style: italic;
+  color: #8A5A44;
+  margin-top: 10px;
+}
+
+.cert-link {
+  display: block;
+  text-align: right;
+  margin-top: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #B36A7A;
+}
+
+.cert-link:hover {
+  text-decoration: underline;
 }
 
 
@@ -168,6 +181,7 @@ text-align: center;
   letter-spacing: 1 px;
   text-transform: uppercase;
 }
+
 
 
 
