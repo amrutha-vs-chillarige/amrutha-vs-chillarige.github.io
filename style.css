@@ -108,6 +108,10 @@ text-align: center;
   padding: 30px 0;
 }
 
+.certifications h2 {
+  margin-bottom: 30px;
+}
+
 .cert-card {
   background: #FFFDFB;
   border-radius: 14px;
@@ -117,10 +121,7 @@ text-align: center;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
-.cert-card h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+
 .cert-card h3 {
   text-align: center;
   margin-bottom: 20px;
@@ -179,12 +180,15 @@ text-align: center;
 }
 
 .projects h2,
-.skills h2 {
+.skills h2,
+.certifications h2 {
   text-align: center;
   font-weight: 700;
-  letter-spacing: 1 px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+
 
 
 
