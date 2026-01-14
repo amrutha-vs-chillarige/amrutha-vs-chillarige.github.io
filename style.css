@@ -130,9 +130,10 @@ text-align: center;
 }
 
 .cert-card a {
-  font-weight: bold;
-  color: #B36A7A;
-  text-decoration: none;
+ max-width: 620px;        /* narrower text column */
+  margin: 0 auto 20px auto;
+  padding-left: 20px;
+  text-align: left;        /* bullets stay readable */
 }
 
 
@@ -167,6 +168,7 @@ text-align: center;
   letter-spacing: 1 px;
   text-transform: uppercase;
 }
+
 
 
 
