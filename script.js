@@ -1,435 +1,248 @@
-/* =====================================================
-   INTERACTIVE PORTFOLIO
-===================================================== */
-
 const modal = document.getElementById("modal");
-
-const modalContent =
-    document.getElementById("modal-content");
-
-const closeButton =
-    document.querySelector(".modal-close");
-
-
-/* =====================================================
-   MODAL CONTENT
-===================================================== */
+const modalContent = document.getElementById("modal-content");
+const closeButton = document.querySelector(".modal-close");
 
 const content = {
 
-
-    /* -------------------------------------------------
-       COOLING PROJECT
-    ------------------------------------------------- */
-
     cooling: `
+        <p class="eyebrow">Featured Project · In Development</p>
 
-        <p class="eyebrow">
-            Featured Project · Python + MATLAB/Simulink
-        </p>
-
-        <h2>
-            Data-Driven Thermal Management
-            of AI Data Centres
-        </h2>
+        <h2>Data-Driven Thermal Management of AI Data Centres</h2>
 
         <p>
-            <strong>Question:</strong>
-            How do different cooling strategies respond to
-            changing AI workloads, and which provides the
-            best balance of thermal stability and energy
-            efficiency?
+            A data-driven engineering project investigating how
+            different cooling strategies respond to changing
+            AI data-centre workloads.
         </p>
 
-        <h3>Approach</h3>
+        <h3>What I'm building</h3>
 
         <ul>
-
-            <li>
-                Analyze workload and cooling-system data
-                using Python.
-            </li>
-
-            <li>
-                Compare conventional air cooling with
-                direct-to-chip liquid cooling.
-            </li>
-
-            <li>
-                Generate dynamic AI workload profiles
-                for simulation.
-            </li>
-
-            <li>
-                Validate thermal behaviour using a
-                reduced-order MATLAB/Simulink model.
-            </li>
-
-            <li>
-                Use PI/PID control to regulate cooling
-                response.
-            </li>
-
-            <li>
-                Compare peak temperature, recovery time,
-                time above threshold, cooling energy and
-                controller effort.
-            </li>
-
+            <li>Python-based workload and cooling-data analysis</li>
+            <li>Comparison of conventional air cooling and liquid cooling</li>
+            <li>Dynamic AI workload profiles</li>
+            <li>Reduced-order thermal modelling</li>
+            <li>MATLAB / Simulink implementation</li>
+            <li>PI/PID-based thermal control</li>
+            <li>Performance comparison using thermal and energy metrics</li>
         </ul>
 
+        <h3>Current status</h3>
+
         <p>
-            <em>
-                This project is currently under development.
-            </em>
+            <strong>🚧 In development</strong>
         </p>
 
+        <p>
+            The project is currently being implemented and will be
+            updated here once the Python analysis and MATLAB/Simulink
+            validation are complete.
+        </p>
     `,
 
 
-    /* -------------------------------------------------
-       ANALYTICS
-    ------------------------------------------------- */
-
     analytics: `
+        <p class="eyebrow">Data Analytics</p>
 
-        <p class="eyebrow">
-            Data Analytics
-        </p>
-
-        <h2>
-            Selected Analytics Work
-        </h2>
+        <h2>Analytics Projects</h2>
 
         <p>
-            Projects spanning Python, SQL, NLP, Power BI
-            and interactive data visualization.
+            A collection of projects using Python, SQL, Power BI,
+            NLP and data visualization to turn datasets into
+            actionable insights.
         </p>
-
 
         <div class="modal-cert-grid">
 
-
             <div class="modal-cert">
-
-                <strong>
-                    Literary Sentiment Analysis
-                </strong>
-
-                <small>
-                    Python · NLP · Web Scraping · Power BI
-                </small>
-
+                <strong>Literary Sentiment Analysis</strong>
+                <small>Python · NLP · Web Scraping · Power BI</small>
                 <br>
-
-                <a
-                    href="https://github.com/amrutha-vs-chillarige/Literary-Sentiment-Analysis"
-                    target="_blank"
-                >
-                    View GitHub ↗
+                <a href="https://github.com/amrutha-vs-chillarige/Literary-Sentiment-Analysis"
+                   target="_blank">
+                    View Project ↗
                 </a>
-
             </div>
 
-
             <div class="modal-cert">
-
-                <strong>
-                    Superstore Sales Analytics
-                </strong>
-
-                <small>
-                    SQL · Power BI · Excel
-                </small>
-
+                <strong>Superstore Sales Analytics</strong>
+                <small>SQL · Power BI · Excel</small>
                 <br>
-
-                <a
-                    href="https://github.com/amrutha-vs-chillarige/Superstore-Sales-Analytics"
-                    target="_blank"
-                >
-                    View GitHub ↗
+                <a href="https://github.com/amrutha-vs-chillarige/Superstore-Sales-Analytics"
+                   target="_blank">
+                    View Project ↗
                 </a>
-
             </div>
 
-
             <div class="modal-cert">
-
-                <strong>
-                    EV Readiness Dashboard
-                </strong>
-
-                <small>
-                    SQL · Power BI · Visualization
-                </small>
-
+                <strong>EV Readiness Analysis</strong>
+                <small>SQL · Power BI · Visualization</small>
                 <br>
-
-                <a
-                    href="https://github.com/amrutha-vs-chillarige/EV-Readiness-Analysis"
-                    target="_blank"
-                >
-                    View GitHub ↗
+                <a href="https://github.com/amrutha-vs-chillarige/EV-Readiness-Analysis"
+                   target="_blank">
+                    View Project ↗
                 </a>
-
             </div>
 
-
             <div class="modal-cert">
-
-                <strong>
-                    Quantium Sales Impact
-                </strong>
-
-                <small>
-                    Python · Dash · Plotly · pytest
-                </small>
-
+                <strong>Quantium Sales Impact</strong>
+                <small>Python · Dash · Plotly · pytest</small>
                 <br>
-
-                <a
-                    href="https://github.com/amrutha-vs-chillarige/quantium-starter-repo"
-                    target="_blank"
-                >
-                    View GitHub ↗
+                <a href="https://github.com/amrutha-vs-chillarige/quantium-starter-repo"
+                   target="_blank">
+                    View Project ↗
                 </a>
-
             </div>
 
         </div>
-
     `,
 
 
-    /* -------------------------------------------------
-       AI
-    ------------------------------------------------- */
-
     ai: `
+        <p class="eyebrow">Generative AI</p>
 
-        <p class="eyebrow">
-            Generative AI
-        </p>
-
-        <h2>
-            AI in Practice
-        </h2>
+        <h2>AI in Practice</h2>
 
         <p>
-            I'm building practical GenAI capability around
-            analytics, research, structured prompting and
+            I'm developing practical GenAI skills focused on
+            analytics, research, prompt engineering and
             AI-assisted workflows.
         </p>
 
-
-        <h3>
-            Current Learning Track
-        </h3>
+        <h3>Completed</h3>
 
         <ul>
-
             <li>
-                <strong>
-                    Vista — AI in Action
-                </strong>
-                ✓ Completed
+                <strong>Vista — AI in Action</strong>
+                <br>
+                GenAI · Prompting · AI workflows
             </li>
-
-            <li>
-                <strong>
-                    BCG — GenAI
-                </strong>
-                — Next
-            </li>
-
-            <li>
-                <strong>
-                    Datacom — Partnering with AI
-                </strong>
-                — Planned
-            </li>
-
         </ul>
 
+        <h3>Currently Exploring</h3>
+
+        <ul>
+            <li>Prompt engineering</li>
+            <li>AI-assisted analytics</li>
+            <li>Structured outputs and evaluation</li>
+            <li>Research workflows using GenAI</li>
+        </ul>
 
         <p>
-            The goal isn't to collect certificates.
-            It's to learn how to use AI reliably alongside
-            analytical and engineering work.
+            <em>
+                More projects and credentials will be added here
+                as I build them.
+            </em>
         </p>
-
     `,
 
-
-    /* -------------------------------------------------
-       ENGINEERING
-    ------------------------------------------------- */
 
     engineering: `
+        <p class="eyebrow">Electrical & Electronics Engineering</p>
 
-        <p class="eyebrow">
-            Electrical & Electronics Engineering
-        </p>
-
-        <h2>
-            Engineering + Systems
-        </h2>
+        <h2>EEE + Systems</h2>
 
         <p>
-            My engineering work sits around electrical
-            systems, control, simulation and data-driven
-            decision making.
+            My engineering background gives me a systems-oriented
+            approach to data and problem solving.
         </p>
 
+        <h3>Current Focus</h3>
 
-        <h3>
-            Current Focus
-        </h3>
+        <ul>
+            <li>MATLAB / Simulink</li>
+            <li>Control systems</li>
+            <li>Thermal modelling</li>
+            <li>Electrical systems</li>
+            <li>Data-driven engineering</li>
+        </ul>
 
         <p>
-            Thermal dynamics, control systems and
-            MATLAB/Simulink through the AI data-centre
-            cooling project.
+            The main engineering project currently under development
+            is the AI data-centre thermal management project.
         </p>
-
-
-        <p>
-            More engineering projects and simulation work
-            will be added here as they become
-            portfolio-ready.
-        </p>
-
     `,
 
 
-    /* -------------------------------------------------
-       CERTIFICATES
-    ------------------------------------------------- */
-
     credentials: `
+        <p class="eyebrow">Credentials</p>
 
-        <p class="eyebrow">
-            Credentials
-        </p>
-
-        <h2>
-            Certificates
-        </h2>
+        <h2>Certificates</h2>
 
         <p>
-            Selected virtual experience and professional
+            Selected virtual experience programs and professional
             learning credentials.
         </p>
 
-
         <div class="modal-cert-grid">
 
-
             <div class="modal-cert">
-
-                <strong>
-                    Vista — AI in Action
-                </strong>
-
-                <small>
-                    GenAI · Prompting · AI workflows
-                </small>
-
+                <strong>Vista — AI in Action</strong>
+                <small>GenAI · Prompting · AI workflows</small>
                 <br>
-
-                <a
-                    href="https://www.theforage.com/"
-                    target="_blank"
-                >
-                    Forage ↗
+                <a href="https://www.theforage.com/"
+                   target="_blank">
+                    View on Forage ↗
                 </a>
-
             </div>
 
-
             <div class="modal-cert">
-
-                <strong>
-                    Quantium — Software Engineering
-                </strong>
-
-                <small>
-                    Dash · pytest · automation
-                </small>
-
+                <strong>Quantium — Software Engineering</strong>
+                <small>Dash · pytest · Automation</small>
                 <br>
-
-                <a
-                    href="https://drive.google.com/file/d/10jxE9jGrqgDTNTmFTWefaAELCJGVeL4W/view?usp=sharing"
-                    target="_blank"
-                >
+                <a href="https://drive.google.com/file/d/10jxE9jGrqgDTNTmFTWefaAELCJGVeL4W/view?usp=sharing"
+                   target="_blank">
                     View Certificate ↗
                 </a>
-
             </div>
 
-
             <div class="modal-cert">
-
-                <strong>
-                    Tata — Data Visualisation
-                </strong>
-
-                <small>
-                    Executive dashboards · insights
-                </small>
-
+                <strong>Tata — Data Visualisation</strong>
+                <small>Executive dashboards · Business insights</small>
                 <br>
-
-                <a
-                    href="https://drive.google.com/file/d/11K9n188JCwT3Lsig4Z--ay8sRFeIgtfW/view?usp=sharing"
-                    target="_blank"
-                >
+                <a href="https://drive.google.com/file/d/11K9n188JCwT3Lsig4Z--ay8sRFeIgtfW/view?usp=sharing"
+                   target="_blank">
                     View Certificate ↗
                 </a>
-
             </div>
 
         </div>
 
         <p>
             <em>
-                More credentials will appear here as
-                they are completed.
+                More credentials will be added as they are completed.
             </em>
         </p>
-
     `
 };
 
 
-/* =====================================================
-   OPEN MODAL
-===================================================== */
+/* OPEN TILE */
 
-document
-    .querySelectorAll("[data-modal]")
-    .forEach(tile => {
+document.querySelectorAll("[data-modal]").forEach(tile => {
 
-        tile.addEventListener("click", () => {
+    tile.addEventListener("click", function () {
 
-            const type = tile.dataset.modal;
+        const type = this.dataset.modal;
+
+        if (content[type]) {
 
             modalContent.innerHTML = content[type];
 
             modal.classList.add("open");
 
             document.body.style.overflow = "hidden";
-
-        });
+        }
 
     });
 
+});
 
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
+
+/* CLOSE BUTTON */
+
+closeButton.addEventListener("click", closeModal);
+
 
 function closeModal() {
 
@@ -440,39 +253,27 @@ function closeModal() {
 }
 
 
-closeButton.addEventListener(
-    "click",
-    closeModal
-);
+/* CLICK OUTSIDE MODAL */
 
+modal.addEventListener("click", function(event) {
 
-/* Click outside */
+    if (event.target === modal) {
 
-modal.addEventListener(
-    "click",
-    event => {
-
-        if (event.target === modal) {
-
-            closeModal();
-
-        }
+        closeModal();
 
     }
-);
+
+});
 
 
-/* Escape key */
+/* ESCAPE KEY */
 
-document.addEventListener(
-    "keydown",
-    event => {
+document.addEventListener("keydown", function(event) {
 
-        if (event.key === "Escape") {
+    if (event.key === "Escape") {
 
-            closeModal();
-
-        }
+        closeModal();
 
     }
-);
+
+});
