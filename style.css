@@ -1,5 +1,5 @@
 /* =========================================================
-   ROOT
+   BASE
 ========================================================= */
 
 :root {
@@ -7,7 +7,7 @@
   --paper: #fffdf9;
   --ink: #463535;
   --muted: #806f70;
-  --line: rgba(70, 53, 53, 0.11);
+  --line: rgba(70, 53, 53, 0.12);
 
   --pink: #f3d7dc;
   --lavender: #e4def0;
@@ -15,8 +15,8 @@
   --cream: #eee3cc;
   --brown: #806866;
 
-  --shadow: 0 14px 35px rgba(70, 53, 53, 0.07);
-  --shadow-hover: 0 20px 45px rgba(70, 53, 53, 0.11);
+  --shadow: 0 12px 35px rgba(70, 53, 53, 0.07);
+  --shadow-hover: 0 18px 42px rgba(70, 53, 53, 0.11);
 
   --radius: 30px;
 }
@@ -34,8 +34,10 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
+
   font-family: "DM Sans", sans-serif;
   line-height: 1.6;
+
   overflow-x: hidden;
 }
 
@@ -58,34 +60,45 @@ button {
    NAVIGATION
 ========================================================= */
 
-.navbar {
+.nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+
+  width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 19px 6vw;
+  padding: 18px 5vw;
 
-  background: rgba(251, 247, 241, 0.9);
+  background: rgba(251, 247, 241, 0.94);
   backdrop-filter: blur(14px);
 
-  border-bottom: 1px solid rgba(70, 53, 53, 0.06);
+  border-bottom: 1px solid rgba(70, 53, 53, 0.07);
 }
 
 .logo {
+  display: inline-block;
+
   font-family: "Playfair Display", serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: 1.45rem;
+  font-weight: 600;
+
+  letter-spacing: -0.04em;
+
+  transition: opacity 0.25s ease;
+}
+
+.logo:hover {
+  opacity: 0.65;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 29px;
+  gap: 32px;
 
   font-size: 0.86rem;
   color: var(--muted);
@@ -93,10 +106,11 @@ button {
 
 .nav-links a {
   position: relative;
+
   transition: color 0.25s ease;
 }
 
-.nav-links a::after {
+.nav-links a:not(.resume-btn)::after {
   content: "";
 
   position: absolute;
@@ -119,6 +133,24 @@ button {
   width: 100%;
 }
 
+.resume-btn {
+  padding: 8px 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--ink);
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.resume-btn:hover {
+  background: var(--pink);
+  transform: translateY(-2px);
+}
+
 
 /* =========================================================
    HERO
@@ -127,17 +159,22 @@ button {
 .hero {
   position: relative;
 
-  min-height: 76vh;
+  min-height: calc(100vh - 73px);
 
-  display: flex;
+  display: grid;
+
+  grid-template-columns: 0.65fr 2.2fr 1.15fr;
+
   align-items: center;
 
-  padding: 105px 8vw 95px;
+  gap: 30px;
+
+  padding: 75px 8vw 90px;
 
   overflow: hidden;
 }
 
-/* ONE main decorative circle */
+/* Large background circle */
 
 .hero::before {
   content: "";
@@ -147,148 +184,178 @@ button {
   width: 430px;
   height: 430px;
 
-  right: -170px;
-  top: -125px;
+  right: -165px;
+  top: -145px;
 
   border-radius: 50%;
 
   background: rgba(243, 215, 220, 0.55);
+
+  pointer-events: none;
 }
 
-/* smaller companion circle */
+/* Small outline circle */
 
 .hero::after {
   content: "";
 
   position: absolute;
 
-  width: 155px;
-  height: 155px;
+  width: 150px;
+  height: 150px;
 
-  right: 185px;
-  bottom: 65px;
-
-  border-radius: 50%;
+  right: 17%;
+  bottom: 55px;
 
   border: 1px solid rgba(70, 53, 53, 0.1);
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
-.hero-content {
+.hero > * {
   position: relative;
   z-index: 2;
-
-  max-width: 920px;
 }
 
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.hero .eyebrow {
+  align-self: center;
 
-  margin-bottom: 24px;
+  max-width: 130px;
 
-  font-size: 0.76rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.86rem;
+  line-height: 1.65;
 
   color: var(--muted);
-}
-
-.hero-eyebrow::before {
-  content: "";
-
-  width: 27px;
-  height: 1px;
-
-  background: var(--muted);
 }
 
 .hero h1 {
-  max-width: 900px;
+  margin: 0;
 
   font-family: "Playfair Display", serif;
-  font-size: clamp(4rem, 8vw, 7.4rem);
+  font-size: clamp(4.5rem, 7.7vw, 8.2rem);
   font-weight: 500;
 
-  line-height: 0.94;
-  letter-spacing: -0.055em;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
 }
 
-.hero h1 span {
+.hero h1 em {
   font-style: italic;
 }
 
-.hero-subtitle {
-  max-width: 610px;
+.hero-copy {
+  align-self: center;
 
-  margin-top: 32px;
+  max-width: 370px;
 
-  font-size: 1.05rem;
-  line-height: 1.8;
+  margin-bottom: 52px;
+
+  font-size: 1rem;
+  line-height: 1.75;
 
   color: var(--muted);
 }
 
+.hero-links {
+  position: absolute;
+
+  right: 8vw;
+  bottom: 105px;
+
+  z-index: 3;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+
+  max-width: 390px;
+
+  font-size: 0.88rem;
+}
+
+.hero-links a {
+  position: relative;
+
+  transition: opacity 0.25s ease;
+}
+
+.hero-links a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 100%;
+  height: 1px;
+
+  background: currentColor;
+
+  opacity: 0.2;
+
+  transition: opacity 0.25s ease;
+}
+
+.hero-links a:hover {
+  opacity: 0.6;
+}
+
+.hero-links a:hover::after {
+  opacity: 0.7;
+}
+
 
 /* =========================================================
-   SHARED SECTION STYLING
+   GENERAL EYEBROW
 ========================================================= */
 
-section {
-  position: relative;
-}
-
-.section-heading {
-  margin-bottom: 34px;
-}
-
-.section-label {
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
+.eyebrow {
+  font-size: 0.73rem;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
 
   color: var(--muted);
 }
 
-.section-title {
-  margin-top: 7px;
-
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.6rem, 4.5vw, 4rem);
-  font-weight: 500;
-
-  line-height: 1;
-  letter-spacing: -0.045em;
-}
-
 
 /* =========================================================
-   WORK
+   WORK SECTION
 ========================================================= */
 
 .work-section {
-  padding: 85px 6vw 110px;
+  position: relative;
+
+  padding: 72px 5vw 105px;
+
+  overflow: hidden;
 }
 
-/*
-   Very subtle circle.
-   It stays behind the grid instead of competing with it.
-*/
+.work-section > .section-label {
+  margin-bottom: 6px;
+
+  font-size: 0.73rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
 
 .work-section::before {
   content: "";
 
   position: absolute;
 
-  width: 180px;
-  height: 180px;
+  width: 190px;
+  height: 190px;
 
-  right: 3vw;
-  top: 20px;
+  right: -55px;
+  top: 0;
 
+  border: 1px solid rgba(70, 53, 53, 0.08);
   border-radius: 50%;
 
-  border: 1px solid rgba(70, 53, 53, 0.07);
+  pointer-events: none;
 }
 
 .tile-grid {
@@ -305,31 +372,33 @@ section {
 .tile {
   position: relative;
 
-  min-height: 380px;
-
-  padding: 31px;
+  min-height: 375px;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  padding: 31px;
+
+  border: 1px solid rgba(70, 53, 53, 0.08);
+  border-radius: var(--radius);
+
+  background: var(--paper);
+  color: var(--ink);
+
+  text-align: left;
+
+  cursor: pointer;
 
   overflow: hidden;
 
-  border: 1px solid rgba(70, 53, 53, 0.07);
-  border-radius: var(--radius);
-
   box-shadow: var(--shadow);
-
-  cursor: pointer;
 
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-/*
-   ONE restrained decorative circle per tile.
-*/
+/* Decorative ring */
 
 .tile::before {
   content: "";
@@ -339,19 +408,16 @@ section {
   width: 145px;
   height: 145px;
 
-  right: -58px;
-  top: -58px;
-
-  border-radius: 50%;
+  right: -62px;
+  top: -62px;
 
   border: 1px solid rgba(70, 53, 53, 0.1);
+  border-radius: 50%;
 
   transition: transform 0.4s ease;
 }
 
-/*
-   Small soft circle — deliberately subtle.
-*/
+/* Small decorative circle */
 
 .tile::after {
   content: "";
@@ -366,7 +432,9 @@ section {
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
+
+  pointer-events: none;
 
   transition: transform 0.4s ease;
 }
@@ -377,11 +445,11 @@ section {
 }
 
 .tile:hover::before {
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
 .tile:hover::after {
-  transform: translate(-5px, -5px);
+  transform: translate(-4px, -4px);
 }
 
 .tile > * {
@@ -390,33 +458,51 @@ section {
 }
 
 .tile-number {
-  font-size: 0.7rem;
-  letter-spacing: 0.13em;
-  opacity: 0.6;
+  display: block;
+
+  text-align: center;
+
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+
+  color: var(--muted);
 }
 
-.tile-title {
-  max-width: 470px;
-
+.tile-body {
   margin-top: auto;
 
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2rem, 3vw, 3.25rem);
-  font-weight: 500;
-
-  line-height: 1;
-  letter-spacing: -0.04em;
+  max-width: 580px;
 }
 
-.tile-description {
-  max-width: 420px;
+.tile-kicker {
+  display: block;
 
-  margin-top: 17px;
+  margin-bottom: 10px;
 
-  font-size: 0.9rem;
-  line-height: 1.65;
+  font-size: 0.77rem;
+  line-height: 1.4;
 
-  color: rgba(70, 53, 53, 0.68);
+  color: var(--ink);
+}
+
+.tile h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.tile p {
+  margin-top: 15px;
+
+  font-size: 0.85rem;
+  line-height: 1.55;
+
+  color: rgba(70, 53, 53, 0.7);
 }
 
 .tile-arrow {
@@ -435,7 +521,7 @@ section {
   border: 1px solid rgba(70, 53, 53, 0.13);
   border-radius: 50%;
 
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 
   transition:
     transform 0.3s ease,
@@ -444,16 +530,16 @@ section {
 
 .tile:hover .tile-arrow {
   transform: rotate(45deg);
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 
-/* =========================================================
-   TILE COLOURS
-========================================================= */
+/* TILE COLOURS */
 
-.tile-pink {
+.tile-featured {
   background: var(--pink);
+
+  min-height: 495px;
 }
 
 .tile-lavender {
@@ -468,30 +554,26 @@ section {
   background: var(--cream);
 }
 
+.tile-pink {
+  background: var(--pink);
+}
+
 .tile-brown {
   background: var(--brown);
   color: #fffaf6;
 }
 
-.tile-brown .tile-description {
+.tile-brown .tile-number,
+.tile-brown .tile-kicker {
+  color: rgba(255, 250, 246, 0.72);
+}
+
+.tile-brown p {
   color: rgba(255, 250, 246, 0.7);
 }
 
 .tile-brown .tile-arrow {
-  border-color: rgba(255, 255, 255, 0.23);
-}
-
-
-/* FEATURED TILE */
-
-.tile-featured {
-  min-height: 510px;
-}
-
-.tile-featured .tile-title {
-  max-width: 630px;
-
-  font-size: clamp(2.8rem, 5vw, 5.2rem);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 
@@ -500,7 +582,9 @@ section {
 ========================================================= */
 
 .about-section {
-  padding: 105px 6vw 115px;
+  position: relative;
+
+  padding: 110px 8vw 120px;
 
   background: var(--paper);
 
@@ -510,73 +594,86 @@ section {
   overflow: hidden;
 }
 
-/*
-   One large quiet circle sitting partly outside the section.
-*/
-
 .about-section::before {
   content: "";
 
   position: absolute;
 
-  width: 310px;
-  height: 310px;
+  width: 340px;
+  height: 340px;
 
   left: -205px;
-  bottom: -120px;
+  bottom: -125px;
 
   border-radius: 50%;
 
-  background: rgba(219, 233, 237, 0.42);
+  background: rgba(219, 233, 237, 0.45);
+
+  pointer-events: none;
 }
 
-.about-layout {
+.about-inner {
   position: relative;
   z-index: 2;
 
   display: grid;
 
-  grid-template-columns: 0.8fr 1.5fr;
+  grid-template-columns: 0.95fr 1.35fr;
 
   gap: 9vw;
 
   align-items: start;
 }
 
-.about-kicker {
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-
-  color: var(--muted);
+.about-heading {
+  position: relative;
 }
 
-.about-heading {
-  margin-top: 14px;
+.about-heading .eyebrow {
+  margin-bottom: 17px;
+}
+
+.about-heading h2 {
+  max-width: 620px;
 
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
   font-weight: 500;
 
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
 }
 
-.about-heading em {
+.about-heading h2 em {
   font-style: italic;
 }
 
-.about-copy {
-  max-width: 680px;
+.about-content {
+  max-width: 650px;
 
-  font-size: 1.04rem;
+  padding-top: 8px;
+}
+
+.about-content p {
+  font-size: 1rem;
   line-height: 1.85;
 
   color: var(--muted);
 }
 
-.about-copy p + p {
+.about-content p + p {
   margin-top: 21px;
+}
+
+.about-intro {
+  font-size: 1.12rem !important;
+  line-height: 1.75 !important;
+
+  color: var(--ink) !important;
+}
+
+.about-intro strong {
+  font-weight: 600;
 }
 
 .about-tags {
@@ -588,22 +685,22 @@ section {
   margin-top: 30px;
 }
 
-.about-tag {
+.about-tags span {
   padding: 8px 14px;
-
-  background: var(--bg);
 
   border: 1px solid var(--line);
   border-radius: 999px;
 
-  font-size: 0.77rem;
+  background: var(--bg);
+
+  font-size: 0.76rem;
 
   transition:
     transform 0.25s ease,
     background 0.25s ease;
 }
 
-.about-tag:hover {
+.about-tags span:hover {
   transform: translateY(-2px);
   background: var(--pink);
 }
@@ -616,7 +713,13 @@ section {
 .contact-section {
   position: relative;
 
-  padding: 115px 6vw;
+  min-height: 480px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 90px 8vw;
 
   background: var(--ink);
   color: #fffaf6;
@@ -624,24 +727,19 @@ section {
   overflow: hidden;
 }
 
-/*
-   Clean large circles in the dark section.
-*/
-
 .contact-section::before {
   content: "";
 
   position: absolute;
 
-  width: 430px;
-  height: 430px;
+  width: 440px;
+  height: 440px;
 
-  right: -200px;
-  top: -210px;
-
-  border-radius: 50%;
+  right: -205px;
+  top: -220px;
 
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
 }
 
 .contact-section::after {
@@ -649,86 +747,57 @@ section {
 
   position: absolute;
 
-  width: 250px;
-  height: 250px;
+  width: 260px;
+  height: 260px;
 
-  right: -105px;
-  top: -120px;
-
-  border-radius: 50%;
+  right: -110px;
+  top: -125px;
 
   border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
 }
 
-.contact-content {
+.contact-section > * {
   position: relative;
   z-index: 2;
-
-  max-width: 900px;
 }
 
-.contact-label {
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.contact-section .eyebrow {
+  margin-bottom: 14px;
 
   color: rgba(255, 250, 246, 0.58);
 }
 
-.contact-title {
-  margin-top: 17px;
+.contact-section h2 {
+  max-width: 850px;
 
   font-family: "Playfair Display", serif;
   font-size: clamp(3.5rem, 7vw, 7rem);
   font-weight: 500;
 
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
 }
 
-.contact-text {
-  max-width: 570px;
+.contact-email {
+  width: fit-content;
 
   margin-top: 27px;
 
-  font-size: 0.98rem;
-  line-height: 1.8;
+  font-size: 0.95rem;
 
-  color: rgba(255, 250, 246, 0.68);
-}
+  color: rgba(255, 250, 246, 0.8);
 
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 12px;
-
-  margin-top: 35px;
-}
-
-.contact-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 11px 17px;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-
-  font-size: 0.82rem;
+  border-bottom: 1px solid rgba(255, 250, 246, 0.3);
 
   transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.contact-link:hover {
-  transform: translateY(-3px);
-
-  background: #fffaf6;
-  color: var(--ink);
+.contact-email:hover {
+  color: #fff;
+  border-color: #fff;
 }
 
 
@@ -739,13 +808,13 @@ section {
 .modal {
   position: fixed;
   inset: 0;
-  z-index: 500;
+  z-index: 2000;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 24px;
+  padding: 25px;
 
   background: rgba(50, 39, 39, 0.55);
 
@@ -770,15 +839,15 @@ section {
   width: min(760px, 100%);
   max-height: 85vh;
 
-  padding: 42px;
+  padding: 43px;
 
   overflow-y: auto;
 
   background: var(--paper);
 
-  border-radius: 27px;
+  border-radius: 28px;
 
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
 
   transform: translateY(15px) scale(0.985);
 
@@ -792,11 +861,11 @@ section {
 .modal-close {
   position: absolute;
 
-  top: 19px;
-  right: 19px;
+  top: 18px;
+  right: 18px;
 
-  width: 39px;
-  height: 39px;
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
@@ -806,7 +875,6 @@ section {
   border-radius: 50%;
 
   background: transparent;
-
   color: var(--ink);
 
   cursor: pointer;
@@ -821,47 +889,46 @@ section {
   background: var(--pink);
 }
 
-.modal-content h2 {
+#modal-content h2 {
   max-width: 620px;
 
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.2rem, 4vw, 3.7rem);
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
   font-weight: 500;
 
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
 }
 
-.modal-content h3 {
-  margin-top: 29px;
+#modal-content h3 {
+  margin-top: 28px;
   margin-bottom: 8px;
 
-  font-size: 0.76rem;
+  font-size: 0.73rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
   color: var(--muted);
 }
 
-.modal-content p {
+#modal-content p {
   color: var(--muted);
   line-height: 1.8;
 }
 
-.modal-content ul {
+#modal-content ul {
   padding-left: 20px;
-  margin-top: 9px;
 
   color: var(--muted);
 }
 
-.modal-content li {
+#modal-content li {
   margin-bottom: 7px;
 }
 
-.modal-content a {
+#modal-content a {
   color: var(--ink);
 
   text-decoration: underline;
@@ -870,14 +937,14 @@ section {
 
 
 /* =========================================================
-   CREDENTIALS
+   CERTIFICATES
 ========================================================= */
 
 .certificate-grid {
   display: grid;
   gap: 11px;
 
-  margin-top: 17px;
+  margin-top: 18px;
 }
 
 .certificate-card {
@@ -934,44 +1001,106 @@ section {
   font-family: "Playfair Display", serif;
   font-size: 1.55rem;
   font-weight: 500;
-
-  color: var(--ink);
 }
 
 .experience-meta {
   margin-bottom: 9px;
 
   font-size: 0.79rem;
+
   color: var(--muted);
 }
 
 
 /* =========================================================
-   FOOTER
+   MOBILE / TABLET
 ========================================================= */
 
-.footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+@media (max-width: 1050px) {
 
-  padding: 24px 6vw;
+  .hero {
+    grid-template-columns: 0.5fr 1.7fr 1fr;
 
-  background: var(--ink);
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
 
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  .hero h1 {
+    font-size: clamp(4rem, 8vw, 6.5rem);
+  }
 
-  color: rgba(255, 250, 246, 0.48);
+  .hero-links {
+    right: 6vw;
+  }
 
-  font-size: 0.74rem;
+  .about-inner {
+    gap: 6vw;
+  }
 }
 
 
-/* =========================================================
-   TABLET
-========================================================= */
+@media (max-width: 800px) {
 
-@media (max-width: 1000px) {
+  .nav {
+    padding: 16px 5vw;
+  }
+
+  .nav-links {
+    gap: 17px;
+  }
+
+  .hero {
+    min-height: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 0;
+
+    padding: 90px 7vw 85px;
+  }
+
+  .hero .eyebrow {
+    max-width: none;
+
+    margin-bottom: 25px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 15vw, 6rem);
+  }
+
+  .hero-copy {
+    max-width: 550px;
+
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+
+  .hero-links {
+    position: static;
+
+    margin-top: 25px;
+
+    max-width: none;
+  }
+
+  .hero::before {
+    width: 300px;
+    height: 300px;
+
+    right: -140px;
+    top: -110px;
+  }
+
+  .hero::after {
+    width: 100px;
+    height: 100px;
+
+    right: 9vw;
+    bottom: 35px;
+  }
 
   .tile-grid {
     grid-template-columns: 1fr 1fr;
@@ -981,76 +1110,44 @@ section {
     grid-column: span 2;
   }
 
-  .about-layout {
+  .about-inner {
     grid-template-columns: 1fr;
-    gap: 42px;
+
+    gap: 45px;
   }
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-  .navbar {
-    padding: 17px 5vw;
-  }
+@media (max-width: 600px) {
 
   .nav-links {
-    gap: 15px;
-    font-size: 0.75rem;
+    gap: 12px;
+
+    font-size: 0.76rem;
   }
 
   .nav-links a:nth-child(3) {
     display: none;
   }
 
+  .resume-btn {
+    padding: 7px 11px;
+  }
+
   .hero {
-    min-height: 70vh;
-    padding: 75px 7vw 80px;
-  }
-
-  .hero::before {
-    width: 290px;
-    height: 290px;
-
-    right: -145px;
-    top: -85px;
-  }
-
-  .hero::after {
-    width: 90px;
-    height: 90px;
-
-    right: 70px;
-    bottom: 45px;
+    padding: 70px 6vw 75px;
   }
 
   .hero h1 {
-    font-size: clamp(3.4rem, 16vw, 5.4rem);
+    font-size: clamp(3.5rem, 16vw, 5rem);
   }
 
-  .hero-subtitle {
-    margin-top: 27px;
-    font-size: 0.96rem;
+  .hero-copy {
+    font-size: 0.94rem;
   }
 
-  .work-section,
-  .about-section {
-    padding: 75px 5vw 85px;
-  }
-
-  .work-section::before {
-    width: 120px;
-    height: 120px;
-
-    right: -40px;
-  }
-
-  .section-heading {
-    margin-bottom: 27px;
+  .work-section {
+    padding: 65px 5vw 80px;
   }
 
   .tile-grid {
@@ -1059,59 +1156,44 @@ section {
 
   .tile-featured {
     grid-column: auto;
-    min-height: 430px;
   }
 
   .tile {
-    min-height: 330px;
+    min-height: 320px;
 
     padding: 27px;
 
     border-radius: 25px;
   }
 
-  .tile-featured .tile-title {
-    font-size: clamp(2.6rem, 13vw, 4rem);
+  .tile-featured {
+    min-height: 410px;
   }
 
-  .tile-title {
-    font-size: 2.35rem;
+  .tile h2 {
+    font-size: 2.4rem;
   }
 
-  .about-heading {
-    font-size: clamp(2.8rem, 13vw, 4.1rem);
+  .about-section {
+    padding: 80px 6vw 90px;
   }
 
-  .about-copy {
-    font-size: 0.98rem;
+  .about-heading h2 {
+    font-size: clamp(3rem, 14vw, 4.5rem);
   }
 
-  .about-section::before {
-    width: 220px;
-    height: 220px;
-
-    left: -150px;
-    bottom: -80px;
+  .about-content {
+    padding-top: 0;
   }
 
   .contact-section {
-    padding: 90px 7vw;
+    min-height: 420px;
+
+    padding: 80px 7vw;
   }
 
-  .contact-title {
-    font-size: clamp(3.2rem, 15vw, 5rem);
-  }
-
-  .contact-section::before {
-    width: 300px;
-    height: 300px;
-
-    right: -160px;
-    top: -150px;
-  }
-
-  .contact-section::after {
-    display: none;
+  .contact-section h2 {
+    font-size: clamp(3.2rem, 14vw, 5rem);
   }
 
   .modal {
@@ -1121,46 +1203,44 @@ section {
   .modal-window {
     max-height: 90vh;
 
-    padding: 32px 24px;
+    padding: 34px 24px;
 
     border-radius: 22px;
-  }
-
-  .footer {
-    flex-direction: column;
-
-    padding: 22px 5vw;
   }
 }
 
 
-/* =========================================================
-   SMALL PHONES
-========================================================= */
+@media (max-width: 430px) {
 
-@media (max-width: 450px) {
+  .nav {
+    padding: 14px 5vw;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
 
   .nav-links a:nth-child(4) {
     display: none;
   }
 
-  .logo {
-    font-size: 1.15rem;
-  }
-
-  .hero {
-    padding-top: 62px;
+  .hero h1 {
+    font-size: 3.4rem;
   }
 
   .tile {
-    min-height: 295px;
+    min-height: 290px;
   }
 
   .tile-featured {
-    min-height: 385px;
+    min-height: 370px;
   }
 
-  .modal-content h2 {
-    font-size: 2.1rem;
+  .tile h2 {
+    font-size: 2.15rem;
+  }
+
+  .contact-section h2 {
+    font-size: 3.1rem;
   }
 }
