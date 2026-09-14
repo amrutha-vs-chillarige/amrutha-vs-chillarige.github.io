@@ -1,7 +1,7 @@
 /* =========================================================
    MODAL SETUP
 ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
+
 const modal = document.getElementById("modal");
 
 const modalContent =
@@ -744,4 +744,4 @@ document.addEventListener(
 
   }
 );
-});
+
