@@ -1052,7 +1052,7 @@ em {
   z-index: 1000;
 }
 
-.modal.active {
+.modal.open {
   opacity: 1;
   visibility: visible;
 }
@@ -1079,7 +1079,7 @@ em {
   transition: transform 0.3s ease;
 }
 
-.modal.active .modal-window {
+.modal.open .modal-window {
   transform: translateY(0) scale(1);
 }
 
