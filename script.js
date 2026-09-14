@@ -1,7 +1,7 @@
 /* =========================================================
    MODAL SETUP
 ========================================================= */
-
+document.addEventListener("DOMContentLoaded", () => {
 const modal = document.getElementById("modal");
 
 const modalContent =
@@ -462,12 +462,7 @@ const content = {
           GenAI · Prompting · AI workflows
         </small>
 
-        <a
-          href="https://www.theforage.com/"
-          target="_blank"
-        >
-          View on Forage ↗
-        </a>
+       <a href="https://drive.google.com/file/d/1cMA4FY8d17INUjTxQYNQL4qJ0MccDYDW/view?usp=drive_link" target="_blank">View Certificate ↗</a>
 
       </div>
 
@@ -749,3 +744,4 @@ document.addEventListener(
 
   }
 );
+});
