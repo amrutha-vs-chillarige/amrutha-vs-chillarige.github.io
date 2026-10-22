@@ -314,11 +314,6 @@ const content = {
 
     </div>
 
-     <p>
-       <strong>Dataset:</strong> UCI Default of Credit Card Clients.
-       This is an educational project using historical data from 2005,
-       not a validated credit-scoring system.
-     </p>
 
   `,
 
